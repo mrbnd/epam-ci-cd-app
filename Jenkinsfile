@@ -21,7 +21,7 @@ environment {
 	    stage('env'){
 		    steps {
 			    script {
-				    echo "${env.gitBranch}"
+				    echo "${env.gitBranch}_${BUILD_NUMBER}"
 			    }
 		    }
 	    }
