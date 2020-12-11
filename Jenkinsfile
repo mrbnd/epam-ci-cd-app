@@ -1,3 +1,7 @@
+environment {
+        gitBranch = scm.branches[0].toString().replace('*/','')
+}
+
 pipeline {
     agent any
     
@@ -12,5 +16,12 @@ pipeline {
                 sh 'ls -la'
             }
         }
+	    stage('env'){
+		    steps {
+			    script {
+				    echo env.gitBranch
+			    }
+		    }
+	    }
     }
 }
