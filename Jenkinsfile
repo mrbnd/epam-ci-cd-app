@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Ls') {
             steps {
-		    git branch: "${param.branch}", url: 'ssh://git@github.com:ATolkachev/epam-ci-cd-app.git', credentialsId: 'atolkachev'
+		    git branch: "${env.branch}", url: 'ssh://git@github.com:ATolkachev/epam-ci-cd-app.git', credentialsId: 'atolkachev'
             }
         }
 	stage('git') {
