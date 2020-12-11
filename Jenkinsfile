@@ -1,9 +1,11 @@
-environment {
-        gitBranch = scm.branches[0].toString().replace('*/','')
-}
+
 
 pipeline {
     agent any
+	
+environment {
+        gitBranch = scm.branches[0].toString().replace('*/','')
+}
     
     stages {
         stage('Ls') {
