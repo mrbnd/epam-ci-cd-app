@@ -1,15 +1,18 @@
 pipeline {
     agent any
-    
+    parameters{
+	    gitParameter branch: '', branchFilter: 'origin/(.*)', defaultValue: 'master', description: '', name: 'branch', quickFilterEnabled: true, selectedValue: 'DEFAULT', sortMode: 'DESCENDING_SMART', tagFilter: '*', type: 'PT_BRANCH', useRepository: 'ssh://git@github.com:ATolkachev/epam-ci-cd-app.git’
+    }
+	    
     stages {
         stage('Ls') {
             steps {
-                sh 'ls'
+		    git branch: "${param.branch}", url: 'ssh://git@github.com:ATolkachev/epam-ci-cd-app.git', credentialsId: 'atolkachev'
             }
         }
-	stage('Ls -la') {
+	stage('git') {
             steps {
-                sh 'ls -la'
+                sh git status'
             }
         }
     }
