@@ -4,6 +4,7 @@ metadata:
 spec:
   containers:
   - name: sonar
+    image: sonarsource/sonar-scanner-cli:latest
     env:
       - name: SONAR_HOST_URL
         value: http://35.228.113.185:9000
