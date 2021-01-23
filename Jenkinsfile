@@ -1,15 +1,15 @@
 pipeline {
   agent {
-    kubernetes {
-      yamlFile 'agent.yaml'
+    docker {
+      args "-v /var/run/docker.sock:/var/run/docker.sock"
+      image "sonarsource/sonar-scanner-cli:4.5"
     }
   }
   stages {
-    stage('Docker Build') {
+    stage('ls') {
       steps {
-	container('sonar') {
-        	sh "sonar-scanner   -Dsonar.projectKey=epam-cicd   -Dsonar.sources=."
-	}
+	 sh "ls -la"
+	
       }
     }
 }
